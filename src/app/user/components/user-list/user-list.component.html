@@ -1,0 +1,15 @@
+<div class="container-fluid u-mt--8">
+    <div class="row">
+        <div class="col-xs-3 col-xs-offset-4">
+            <div *ngFor="let user of userList">
+              <ce-user-list-item [user]="user" (clickEdit)="editUser($event)" (clickDelete)="deleteUser($event)"></ce-user-list-item>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3 col-xs-offset-4">
+            <button [routerLink]="['/users/new']">New</button>
+        </div>
+    </div>
+</div> 
+   

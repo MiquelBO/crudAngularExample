@@ -1,0 +1,46 @@
+<div class="container-fluid u-mt--8">   
+    <form (ngSubmit)="saveChanges()" #userForm="ngForm">
+      <div class="row">
+          <div class="col-xs-2 col-xs-offset-4">
+            <label for="name">Name</label>
+          </div>
+          <div class="col-xs-6">
+              <input type="text" class="form-control" id="name"
+              required
+              [(ngModel)]="user.name" name="name"
+              #name="ngModel">
+            <div [hidden]="name.valid || name.pristine">
+              Name is required
+            </div>
+          </div>
+      </div>
+      <div class="row u-mt--2">
+          <div class="col-xs-2 col-xs-offset-4">
+            <label for="email">Email</label>
+          </div>
+          <div class="col-xs-6">
+              <input type="text" class="form-control" id="email"
+              [(ngModel)]="user.email" name="email">
+          </div>
+      </div>
+      <div class="row u-mt--2">
+          <div class="col-xs-2 col-xs-offset-4">
+            <label for="birthDate">BirthDate</label>
+          </div>
+          <div class="col-xs-6">
+              <input type="text" class="form-control" id="birthDate"
+              [(ngModel)]="user.birthDate" name="birthDate">
+          </div>
+      </div>               
+      <div class="row u-mt--8">
+          <div class="col-xs-2 col-xs-offset-4">
+              <button [routerLink]="['/user/list']">Cancel</button>
+              /
+              <button type="submit" [disabled]="!userForm.valid">Submit</button>
+          </div>
+      </div>
+    </form>
+</div>
+
+
+ 
