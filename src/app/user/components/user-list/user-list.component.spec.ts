@@ -44,7 +44,7 @@ fdescribe('UserListComponent', () => {
 
   it('should call userService.getAllUsers() and initialize userList when ngOnInit is called', () => {
     spyOn(userService, 'getAllUsers').and.returnValue(of(USERS));
-    component.userList = undefined;
+    component.userList = [];
 
     component.ngOnInit();
 
