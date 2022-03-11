@@ -116,12 +116,7 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {
-            "baseHref": "/crudAngularExample/",
-            "name": "MiquelBO",
-            "email": "mboriols@hotmail.com"
-          }
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
