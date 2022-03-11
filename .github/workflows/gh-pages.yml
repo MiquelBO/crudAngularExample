@@ -38,9 +38,10 @@ jobs:
         run: |
           npm ci
 
-      - name: Build
-        run: |
-          npm run build -- --prod
+      # La action "name: Deploy" ja da un build amb --base-href=/crudAngularExample/ ("deploy": "ng deploy --base-href=/crudAngularExample/ ...")
+      # - name: Build
+      #   run: |
+      #     npm run build -- --prod
 
       # - name: Lint
       #   run: |
