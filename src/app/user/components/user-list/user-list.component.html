@@ -1,15 +1,8 @@
-<div class="container-fluid mt-4">
-    <div class="row">
-        <div class="col-8 offset-2">
-            <div *ngFor="let user of userList">
-              <ce-user-list-item [user]="user" (clickEdit)="editUser($event)" (clickDelete)="deleteUser($event)"></ce-user-list-item>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-8 offset-2">
-            <button [routerLink]="['/users/new']">New</button>
-        </div>
-    </div>
-</div> 
-   
+<div class="user-list container-fluid">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let user of userList">
+            <ce-user-list-item [user]="user" (clickEdit)="editUser($event)" (clickDelete)="deleteUser($event)"></ce-user-list-item>
+        </li>
+    </ul>
+    <button class="mt-5" [routerLink]="['/users/new']">New</button>
+</div>

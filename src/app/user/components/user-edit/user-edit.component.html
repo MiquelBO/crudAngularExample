@@ -1,10 +1,8 @@
-<div class="container-fluid mt-4">   
+<div class="user-edit container-fluid">   
     <form (ngSubmit)="saveChanges()" #userForm="ngForm">
-      <div class="row">
-          <div class="col-2 offset-2">
-            <label for="name">Name</label>
-          </div>
-          <div class="col-6">
+      <div class="form-group row">
+          <label for="name" class="col-3 col-form-label">Name</label>
+          <div class="col-9">
               <input type="text" class="form-control" id="name"
               required
               [(ngModel)]="user.name" name="name"
@@ -14,30 +12,24 @@
             </div>
           </div>
       </div>
-      <div class="row mt-2">
-          <div class="col-2 offset-2">
-            <label for="email">Email</label>
-          </div>
-          <div class="col-6">
+      <div class="form-group row mt-2">
+          <label for="email" class="col-3 col-form-label">Email</label>
+          <div class="col-9">
               <input type="text" class="form-control" id="email"
               [(ngModel)]="user.email" name="email">
           </div>
       </div>
-      <div class="row mt-2">
-          <div class="col-2 offset-2">
-            <label for="birthDate">BirthDate</label>
-          </div>
-          <div class="col-6">
+      <div class="form-group row mt-2">
+          <label for="birthDate" class="col-3 col-form-label">BirthDate</label>
+          <div class="col-9">
               <input type="text" class="form-control" id="birthDate"
               [(ngModel)]="user.birthDate" name="birthDate">
           </div>
       </div>               
-      <div class="row mt-8">
-          <div class="col-2 offset-2">
-              <button [routerLink]="['/user/list']">Cancel</button>
-              /
-              <button type="submit" [disabled]="!userForm.valid">Submit</button>
-          </div>
+      <div class="mt-5">
+        <button [routerLink]="['/user/list']">Cancel</button>
+        /
+        <button type="submit" [disabled]="!userForm.valid">Submit</button>
       </div>
     </form>
 </div>
