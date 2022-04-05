@@ -8,7 +8,7 @@ import { USERS } from '../../models/mocks';
 import { UserListItemComponent } from '../user-list-item/user-list-item.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
-fdescribe('UserListComponent', () => {
+describe('UserListComponent', () => {
   let component: UserListComponent;
   let fixture: ComponentFixture<UserListComponent>;
   let router: Router;

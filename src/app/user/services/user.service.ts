@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { USERS } from '../models/mocks';
 import { NewUser, User } from '../models/user.interface';
 
 @Injectable({
@@ -8,54 +7,63 @@ import { NewUser, User } from '../models/user.interface';
 })
 export class UserService {
 
-  constructor() { }
+  private users: User[] = [
+    {
+      id: 1,
+      name: 'Ramon Vila',
+      email: 'email1',
+      birthDate: '1/1/1970'
+    }
+  ];
 
+  constructor() { }
+  
   getAllUsers(): Observable<User[]> {
-    const usersCopia = JSON.parse(JSON.stringify(USERS));
-    return of(usersCopia);
+    return of(
+      this.users.map(user => ({...user}))
+    );
   }
 
   getUser(id: number): Observable<User> {
-    const user = USERS.find((u) => u.id === id );
-    if (user) {
-      const userCopia = JSON.parse(JSON.stringify(user));
-      return of(userCopia);
-    } else {
-      return throwError('user(id = ' + id + ') not found');
-    }
+    const user = this.users.find((u) => u.id === id );
+
+    return user ? of({...user}) : throwError(() => new Error('user(id = ' + id + ') not found'));
   }
 
   deleteUser(id: number): Observable<string> {
-    const index = USERS.findIndex((u) => u.id === id );
+    const index = this.users.findIndex((u) => u.id === id );
+
     if (index > -1) {
-      USERS.splice(index, 1);
+      this.users.splice(index, 1);
       return of('user(id = ' + id + ') deleted');
     } else {
-      return throwError('user(id = ' + id + ') not found');
+      return throwError(() => new Error('user(id = ' + id + ') not found'));
     }
   }
 
-  putUser(user: User): Observable<User> {
-    const index = USERS.findIndex((u) => u.id === user.id );
+  putUser(user: User): Observable<string> {
+    const index = this.users.findIndex((u) => u.id === user.id );
+
     if (index > -1) {
-      USERS[index] = user;
-      return of(user);
+      this.users[index] = {...user};
+      return of('user(id = ' + user.id + ') updated');
     } else {
-      return throwError('user(id = ' + user.id + ') not found');
+      return throwError(() => new Error('user(id = ' + user.id + ') not found'));
     }
   }
 
-  postUser(newUser: NewUser): Observable<User> {
-    let maxid = 0;
-    USERS.forEach((u: User) => { if ((u.id) && (u.id > maxid)) { maxid = u.id; } });
-
+  postUser(newUser: NewUser): Observable<number> {
+    const id = this.users.reduce((prev, curr) => {
+      return (prev <= curr.id) ? curr.id + 1 : prev;
+    }, 1);
     const user: User = {
       ...newUser,
-      id: maxid + 1
+      id
     }
 
-    USERS.push(user);
-    return of(user);
+    this.users.push(user);
+
+    return of(user.id);
   }
 
 }

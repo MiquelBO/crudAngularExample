@@ -35,17 +35,12 @@ export class UserEditComponent implements OnInit {
   saveChanges() {
     if (this.user.id) {
       this.userService.putUser(this.user).subscribe(
-        user => {
-          this.user = user;
-          this.router.navigate(['/user/list']);
-        }
+        _ => this.router.navigate(['/user/list'])
+        
       );
     } else {
       this.userService.postUser(this.user as NewUser).subscribe(
-        user => {
-          this.user = user;
-          this.router.navigate(['/user/list']);
-        }
+        _ => this.router.navigate(['/user/list'])     
       );
     }
   }
