@@ -1,4 +1,4 @@
-import '../mocks/browser';
+import '../mocks/browser.prod';
 
 export const environment = {
   production: true,
