@@ -1,3 +1,6 @@
+import '../mocks/browser';
+
 export const environment = {
-  production: true
+  production: true,
+  API_USERS: '/api/users'
 };

@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 import { USERS } from '../../models/mocks';
 import { UserListItemComponent } from '../user-list-item/user-list-item.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -17,11 +18,15 @@ describe('UserListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientModule
       ],
       declarations: [
         UserListComponent,
         UserListItemComponent
+      ],
+      providers: [
+        UserService
       ]
     })
     .compileComponents();
