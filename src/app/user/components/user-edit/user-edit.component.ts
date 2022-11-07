@@ -11,7 +11,6 @@ import { UserService } from '../../services/user.service';
 export class UserEditComponent implements OnInit {
 
   user: NewUser | User = {
-    id: undefined,
     name: '',
     birthDate: ''
   };
@@ -26,15 +25,15 @@ export class UserEditComponent implements OnInit {
     const userId = this.route.snapshot.paramMap.get('id');
 
     if (userId) {
-      this.userService.getUser(+userId).subscribe(
+      this.userService.getUser(userId).subscribe(
         user => this.user = user
       );
     }
   }
 
   saveChanges() {
-    if (this.user.id) {
-      this.userService.putUser(this.user).subscribe(
+    if (this.user.hasOwnProperty('id')) {
+      this.userService.putUser(this.user as User).subscribe(
         _ => this.router.navigate(['/user/list'])
         
       );

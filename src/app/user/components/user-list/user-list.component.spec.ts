@@ -58,7 +58,7 @@ describe('UserListComponent', () => {
 
   it('should navigate to user/detail/:id when editUser is call', () => {
     const navigateSpy = spyOn(router, 'navigate');
-    component.editUser(1234);
-    expect(navigateSpy).toHaveBeenCalledWith (['users/edit/', 1234]);
+    component.editUser('1234');
+    expect(navigateSpy).toHaveBeenCalledWith (['users/edit/', '1234']);
   });
 });

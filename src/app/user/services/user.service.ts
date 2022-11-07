@@ -13,11 +13,11 @@ export class UserService {
     return this.http.get<User[]>(environment.API_USERS);
   }
 
-  getUser(id: number): Observable<User> {
+  getUser(id: string): Observable<User> {
     return this.http.get<User>(`${environment.API_USERS}/${id}`);
   }
 
-  deleteUser(id: number): Observable<string> {
+  deleteUser(id: string): Observable<string> {
     return this.http.delete<string>(`${environment.API_USERS}/${id}`);
   }
 

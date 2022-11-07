@@ -9,19 +9,19 @@ import { User } from '../../models/user.interface';
 export class UserListItemComponent implements OnInit {
 
   @Input() user: User | undefined;
-  @Output() clickEdit: EventEmitter<number> = new EventEmitter();
-  @Output() clickDelete: EventEmitter<number> = new EventEmitter();
+  @Output() clickEdit: EventEmitter<string> = new EventEmitter();
+  @Output() clickDelete: EventEmitter<string> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  editUser(id: number) {
+  editUser(id: string) {
     this.clickEdit.emit(id);
   }
 
-  deleteUser(id: number) {
+  deleteUser(id: string) {
     this.clickDelete.emit(id);
   }
 

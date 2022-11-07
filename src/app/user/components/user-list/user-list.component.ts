@@ -27,11 +27,11 @@ export class UserListComponent implements OnInit {
     );
   }
 
-  editUser(id: number) {
+  editUser(id: string) {
     this.router.navigate(['users/edit/', id]);
   }
 
-  deleteUser(id: number) {
+  deleteUser(id: string) {
     this.userService.deleteUser(id).subscribe(
       (result: string) => {
         console.log(result);

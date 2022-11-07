@@ -1,10 +1,8 @@
 export interface User {
-  id: number;
+  id: string;
   name: string;
   email?: string;
   birthDate: string;
 }
 
-export interface NewUser extends Omit<User, 'id'> {
-  id: undefined;
-}
+export type NewUser = Omit<User, 'id'>;
